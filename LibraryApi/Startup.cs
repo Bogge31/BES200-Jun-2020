@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using AutoMapper;
 using LibraryApi.Domain;
@@ -36,6 +37,7 @@ namespace LibraryApi
                 .AddJsonOptions(options =>
                 {
                     options.JsonSerializerOptions.IgnoreNullValues = true;
+                    options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
                 });
 
             services.AddTransient<ISystemTime, SystemTime>();
@@ -72,6 +74,17 @@ namespace LibraryApi
                 c.IncludeXmlComments(xmlPath);
 
             });
+
+            services.AddDistributedRedisCache(options =>
+            {
+                options.Configuration = Configuration.GetConnectionString("Redis");
+            });
+
+            services.AddTransient<ICacheTheCatalog, CatalogService>();
+            //services.AddResponseCaching((options) =>
+            //{
+
+            //});
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

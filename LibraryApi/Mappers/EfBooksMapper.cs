@@ -23,11 +23,22 @@ namespace LibraryApi.Mappers
             Config = config;
         }
 
+        public async Task<GetABookResponse> AddBook(PostBookCreate bookToAdd)
+        {
+            var book = Mapper.Map<Book>(bookToAdd);
+            Context.Books.Add(book); // I have no Id!
+            await Context.SaveChangesAsync(); // Suddenly I have an ID! 
+
+            var response = Mapper.Map<GetABookResponse>(book);
+            return response;
+        }
+
         public async Task<GetBooksResponse> GetAllBooksFor(string genre)
         {
             var books = Context.Books
                 .Where(b => b.InStock)
-                .ProjectTo<GetBooksResponseItem>(Config);
+                .ProjectTo<GetBooksResponseItem>(Config)
+                .AsNoTracking();  // On read-only things, ALWAYS do this.
 
             if (genre != null)
             {

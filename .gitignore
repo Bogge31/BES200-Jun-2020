@@ -9,3 +9,5 @@
 /LibraryApiIntegrationTests/bin/Debug/netcoreapp3.1
 /LibraryApiIntegrationTests/obj
 /.vs/LibraryApiSolution
+/TimeClient/bin/Debug/netcoreapp3.1
+/TimeClient/obj

@@ -9,5 +9,6 @@ namespace LibraryApi.Mappers
     public interface IMapBooks
     {
         Task<GetBooksResponse> GetAllBooksFor(string genre);
+        Task<GetABookResponse> AddBook(PostBookCreate bookToAdd);
     }
 }
