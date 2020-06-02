@@ -3,3 +3,9 @@
 ################################################################################
 
 /.vs/LibraryApiSolution/v16
+/LibraryApi/bin/Debug/netcoreapp3.1
+/LibraryApi/Migrations
+/LibraryApi/obj
+/LibraryApiIntegrationTests/bin/Debug/netcoreapp3.1
+/LibraryApiIntegrationTests/obj
+/.vs/LibraryApiSolution
