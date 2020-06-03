@@ -11,3 +11,5 @@
 /.vs/LibraryApiSolution
 /TimeClient/bin/Debug/netcoreapp3.1
 /TimeClient/obj
+/bes200-rabbitmqutils/.vs/RabbitMqUtils
+/bes200-rabbitmqutils/bin/Debug/netcoreapp3.1
